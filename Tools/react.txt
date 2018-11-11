@@ -1,0 +1,25 @@
+***********************************************
+* Install Create React App (Used once per PC) *
+***********************************************
+Note: Please ensure yarn is installed properly
+
+Open cmd and execute the following command:
+
+
+
+********************
+* Create React App *
+********************
+Open cmd and execute the following command:
+    npx create-react-app <name of your react app>
+
+**********************
+* Run Your React App *
+**********************
+1. CD to the location of your react project you created.
+2. execute the commands in the following order:
+    yarn install
+    yarn start
+
+Now you should see your react app loaded on your browser with the URL http://localhost:3000/
+Note: If you have VS CODE, Use cmd to cd to the <src> directory in your <react project> directory. Then type "code ." to open your .js files and begin coding for your react project

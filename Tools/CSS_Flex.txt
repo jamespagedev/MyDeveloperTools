@@ -1,0 +1,68 @@
+display: flex; --> Default setting to use flex api's
+
+tips:
+    remember...
+        main axis line = line that goes east/west
+            anything starting with "justify" goes on the main axis line
+        cross axis line = line that goes north/south
+            anything starting with "align" goes on the cross axis line
+    Browser Support:
+        Chrome 21++
+        Safari 6.1++
+        firefox 22++
+        Opera 12.1++
+        IE 11++
+        edge 17++
+        Android 4.4++
+        ios 7.1++
+    flex explained in further details --> https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+flex-direction:
+    row; --> (default) left to right in ltr. right to left in rtl
+    row-reverse; --> right to left in ltr; left to right in rtl
+    column; --> same as row but top to bottom
+    column-reverse; --> same as row-reverse but bottom to top
+
+flex-wrap:
+    nowrap; (default) --> all flex items will be on one line
+    wrap; --> flex items will wrap onto multiple lines, from top to bottom (depending on the flex-direction).
+    wrap-reverse; --> flex items will wrap onto multiple lines from bottom to top.
+
+flex-flow: row wrap; --> a shortcut to use both `flex-direction` and `flex-wrap` on the same line.
+
+justify-content:
+    flex-start; (default) --> items are packed toward the start line
+    flex-end; --> items are packed toward to end line
+    center; --> items are centered along the line
+    space-between; --> Depending on the size of the container and # of items in the line, puts an equal space in between the items. There is no space at the start or end of the line.
+    space-around; --> Will look something like this... __item__.__item__.__item__
+    space-evenly --> will look something like this... ____item____item____item____
+
+align-items:
+    stretch; (Default) --> stretch to fill the container (still respect min-width/max-width)
+    flex-start; --> cross-start margin edge of the items is placed on the cross-start line
+    flex-end; --> cross-end margin edge of the items is placed on the cross-end line
+    center; --> items are centered in the cross-axis
+    baseline; --> items aligned to match the lowest bottom-item placement
+
+align-content:
+    stretch; (Default) --> lines stretch to take up the remaining space
+    flex-start; --> lines packed to the start of the container
+    flex-end; --> lines packed to the end of the container
+    center; --> lines packed to the center of the container
+    space-between; --> lines evenly distributed; the first line is at the start of the container while the last one is at the end
+    space-around; --> lines evenly distributed with equal space around each line
+
+order: integer; (default 0) --> re-arrange the order of the items in the container in align with the direction.
+
+flex-grow: number; (default 0) --> stretches the item to fill the container. The higher the number, the more space the item will take compared to other item lower numbers.
+
+flex-shrink: number; (default 1) --> opposite of flex-grow. (note: does not allow negative integers)
+
+align-self: Takes a single item out of the group of items (within the container), and sets the alignment with it's own rules.
+    auto; (default) --> uses whatever the group alignment setting is for all items within the container
+    flex-start;
+    flex-end;
+    center;
+    baseline;
+    stretch;

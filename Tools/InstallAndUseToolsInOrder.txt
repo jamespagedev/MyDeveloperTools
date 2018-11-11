@@ -1,0 +1,256 @@
+Important: assume anytime instructions show to open cmd, powershell, an installer, and/or git bash... it should be opened and run as administrator
+
+Install the tools in the following order (for using the less pre-processor for .css files):
+    https://www.youtube.com/watch?v=xdwZb_GcqbI&feature=youtu.be
+    Note: I know the video says not to install chocolatey or scoop, but I did so anyway following the documentation instructions, and everything ran smoothly.
+    1) Nodejs
+    2) Git Bash (Git CSM)
+    3) (optional): Chocolatey
+    4) (optional): Scoop
+    5) Yarn
+    6) Less and less-watch-compiler
+      6.1) Usage
+
+Use to setup react app building projects:
+    https://www.youtube.com/watch?time_continue=5&v=N9BxYpUqdDg
+    7) Boilerplate (react application used to setup app projects)
+      7.1) Usage
+
+
+
+1) Nodejs
+======================================================================================================================
+=================================================== Install Nodejs ===================================================
+======================================================================================================================
+* download installer -> https://nodejs.org/en/ (select the recommended/stable version)
+
+* Run installer (as administrator)
+* * Go through install wizard (leave everything as default)
+
+* Check if nodejs installed correctly:
+Note: git bash must be installed before doing this. Please see next section "Install Git Bash" first, before running these commands.
+* * Open CMD and type the following command:
+    type "node -v"
+* * You should see the version number
+
+(Troubleshooting nodejs install)
+* * If you did not not see the verson when running the command "node -v", try running this command in your git bash window (or adding git bash to your environment variables)
+* * * C:\Program Files\Git\bin\git.exe
+* * * C:\Program Files\Git\cmd
+* * If you do not have git bash installed, please proceed to the next section to install gitbash
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Git Bash (Git CSM)
+======================================================================================================================
+============================================= Install Git Bash (Git CSM) =============================================
+======================================================================================================================
+* download installer -> https://git-scm.com/download/win
+
+* Run installer (as administrator)
+* * Go through install wizard (leave everything as default)
+
+* Check if git installed correctly:
+* * Open CMD and type the following command:
+    type "git --version"
+* * You should see the version number
+
+(Troubleshooting nodejs install)
+* If you did not not see the verson when running the command "git --v", check your environment variables(PATH) and ensure you can see the following (assuming you used the install wizard with default selections):
+* * C:\Program Files\Git\bin\git.exe
+* * C:\Program Files\Git\cmd
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3) Chocolatey
+======================================================================================================================
+================================================= Install Chocolatey =================================================
+======================================================================================================================
+Instructions found from -> https://chocolatey.org/install
+
+* Pre-install Requirements:
+* * Windows 7+ / Windows Server 2003+
+* * PowerShell v2+
+* * * Ensure Get-ExecutionPolicy is not Restricted by running the following commands (in powershell cmd):
+      Get-ExecutionPolicy
+* * * If you see Restricted, execute one of the two commands:
+      <Set-ExecutionPolicy AllSigned> or <Set-ExecutionPolicy Bypass -Scope Process>
+* * * (Note): You may want to check the script for safety reasons, before running the next powershell command...
+* * * Next, run the following command:
+      Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+* * .NET Framework 4+ (the installation will attempt to install .NET 4.0 if you do not have it installed)
+
+* To install Chocolatey, Open CMD(as admin) and run the following commands:
+  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+* Check if Chocolatey installed correctly:
+* * Run the following command (via CMD):
+  choco -?
+* * You should see a list of commands and the version number.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4) Scoop
+======================================================================================================================
+==================================================== Install Scoop ===================================================
+======================================================================================================================
+Instructions found from -> https://github.com/lukesampson/scoop/wiki/Quick-Start
+
+* Pre-install Requirements:
+* * PowerShell v3+, run the following commands in powershell to ensure it is setup correctly:
+    $psversiontable.psversion.major
+* * You should see: >= 3
+    Get-ExecutionPolicy
+* * You should see: RemoteSigned
+* * * If you don't, run the following command:
+      set-executionpolicy remotesigned -scope currentuser
+
+* To install scoop, enter the following command (via powershell):
+  iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+* or
+* To install scoop to a custom directory, you need two directories.
+* * First directory is for your scoop (e.g.: C:\Users\myUserName\Scoop), create the Scoop folder if it doesn't exist. Once you have this directory available, run the following commands:
+    [environment]::setEnvironmentVariable('SCOOP','C:\Users\myUserName\Scoop','User')
+    $env:SCOOP='C:\Users\Vako\Scoop'
+    iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+* * * (Note): notice the 2/3 commands have the example directory, you can use whatever directory you wish, just ensure the directory exists.
+* * Second directory is for your global apps (e.g.: C:\Users\myUserName\GlobalScoopApps), create the Scoop folder if it doesn't exist. Once you have this directory available, run the following commands:
+    [environment]::setEnvironmentVariable('SCOOP_GLOBAL','F:\GlobalScoopApps','Machine')
+    $env:SCOOP_GLOBAL='F:\GlobalScoopApps'
+    scoop install -g <app>
+* * * (Note): notice the 2/3 commands have the example directory, you can use whatever directory you wish, just ensure the directory exists.
+
+* Check if Scoop installed correctly:
+* * Run the following command (via CMD):
+    scoop status
+* * You should see "Scoop is up to date". If not, run the following command:
+    scoop update
+    scoop status
+* * (Note): If your Nodejs and yarn is on older versions, it may give you suggestions to update showing what version you have, and what version is the newest.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5) Yarn
+======================================================================================================================
+==================================================== Install Yarn ====================================================
+======================================================================================================================
+Instructions found from -> https://yarnpkg.com/en/docs/install#windows-stable
+
+* Pre-install Requirements:
+* * Node.js
+
+* To install yarn, there are 3 options on how you can do this:
+* * (Option 1): To install yarn using Chocolatey, open CMD and execute the following command:
+    choco install yarn
+* * (Option 2): To install yarn using Scoop, open CMD and execute the following command:
+    scoop install yarn
+* * (Option 3): To install yarn using the msi installer, go to this webpage(https://yarnpkg.com/en/docs/install#windows-stable) and click the "Download Installer" button
+* * * Leave everything as default, and complete the installation wizard.
+
+* Check if yarn installed correctly:
+* * Run the following command (via CMD):
+    yarn --version
+* * You should see the version number.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6) Less and less-watch-compiler
+======================================================================================================================
+======================================== Install Less and less-watch-compiler ========================================
+======================================================================================================================
+* Pre-Install Requirements:
+* * Node.js
+* * Yarn
+
+* To install less and the less-watch-compiler, open cmd (or git bash), and execute the following commands (in order):
+    yarn global add less
+    yarn global add less-watch-compiler
+
+* Check if Less installed correctly:
+* * Run the following command (via CMD):
+    less --version
+* * You should see less number.
+----------------------------------------------------------------------------------------------------------------------
+
+6.1) less-watch-compiler (Usage)
+======================================================================================================================
+============================================== Using less-watch-compiler =============================================
+======================================================================================================================
+* Open CMD in the directory of your project and execute the command:
+  tree /F
+* You should see something like this:
+    Folder PATH listing for volume F
+    Volume serial number is FA69-FA06
+    F:.
+    ¦   .gitignore
+    ¦   Answers.md
+    ¦   index.html
+    ¦   README.md
+    ¦
+    +---css
+    ¦       index.css
+    ¦
+    +---design-files
+    ¦       home-desktop.png
+    ¦       home-mobile.png
+    ¦
+    +---img
+    ¦       .DS_Store
+    ¦       blast.png
+    ¦       launch.png
+    ¦       main-header.png
+    ¦       sky.png
+    ¦       space-walk.png
+    ¦
+    +---less
+            footer.less
+            global.less
+            home-page.less
+            index.less
+            mixins.less
+            navigation.less
+            reset.less
+            variables.less
+
+* Once you have confirmed you are in your projects directory, execute the following command to start the less compiler:
+  less-watch-compiler less css index.less
+* You should see the compiler running (in cmd) and anytime you save a change made to any of the .less file(s), the compiler prints a message and updates your .css file (if no errors were found).
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7) Boilerplate
+======================================================================================================================
+================================================= Install Boilerplate ================================================
+======================================================================================================================
+* Pre-Install Requirements:
+* * Node.js
+* * Yarn
+
+* To install Boilerplate, Open CMD(as admin) and run the following command:
+    yarn global add create-react-app
+
+* Check if Boilerplate installed correctly:
+* * Run the following command (via CMD):
+    create-react-app --version
+* * You should see less number.
+
+----------------------------------------------------------------------------------------------------------------------
+
+7.1) Boilerplate (Usage)
+======================================================================================================================
+================================================== Using Boilerplate =================================================
+======================================================================================================================
+* Open CMD (in the directory you wish to create the project) and run the following commands:
+  npx create-react-app <name of your react app>
+  cd <name of your react app>
+  yarn install
+  yarn start
+* You should see a webpage pop open in your default browser (e.g.: Chrome).
+
+* (Note): If you have VS Code installed, you can begin editing the .js files by executing the commands (in a different cmd window):
+  cd src
+* * Your src should be located in the project directory you just created
+  code .
+
+* For now... you can remove the following lines in the file index.js:
+  import * as serviceWorker from './serviceWorker';
+  serviceWorker.unregister();
+* * And... you can remove the following files:
+    App.test.js
+    serviceWorker.js
+
+You should now be ready to begin coding for your project.

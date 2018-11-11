@@ -1,0 +1,6 @@
+HTML:
+    <meta name="viewport" content="width=device-width, intitial-scale=1.0"> --> used to allow viewsizing for phones
+
+CSS:
+    @media (max-width: 800px) {}
+

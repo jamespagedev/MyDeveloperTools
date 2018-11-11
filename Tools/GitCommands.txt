@@ -1,0 +1,17 @@
+*** Important: remember to fork the assignment as your own before working on it ***
+
+
+git clone <website_link> --> Pulls all files/directories from the site's repository down to the current local directory, and creates a local repository to store these files/directories.
+git add . --> adds all files you created in the local repository.
+git status --> tells you information on where you are with git.
+git commit -m "type your message here" --> assigns message with the commit to be pushed on the remote repository
+git push --> pushes the latest commit(s) to update the remote repository
+git branch -a -> shows a list of both local and remote branches
+git branch -r -> shows a list of remote branches
+
+Update your remote repository master fork from the lambda remote repository master:
+    1. git remote add upstream `repo URL here`
+    2. git pull upstream master
+
+git push --set-upstream origin develop --> pushes your offBranch onto the masterBranch
+

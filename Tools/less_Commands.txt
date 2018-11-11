@@ -1,0 +1,2 @@
+Runs the compiler... (less=dirSource, css=dirDestination, index.less=fileSource)
+>less-watch-compiler less css index.less

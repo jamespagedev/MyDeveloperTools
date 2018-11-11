@@ -1,0 +1,39 @@
+*selectEverything {}
+
+htmlElementName {}
+
+.htmlClassName {}
+
+#htmlIdName {}
+
+/* Universally selects stuff */
+* {
+  box-sizing: border-box; /* Keeps unnecessary changes from happening outside of your layout code for the box model 
+                             Example: container staying center in the browser when margin/padding properties change
+                             More Info (box model): https://www.w3schools.com/css/css_boxmodel.asp
+                             Note: This setting should be used at the start of every .css file (unless there is a rare and specific reason not to).
+                           */
+}
+
+
+{
+  width: #px || #%; /* Sets the width size of the container */
+  max-width: #px || #%; /* Same as width, except if the container is collapsed on, the container resizes while bringing the items down to the next line as needed
+                           Note: this setting will override `width`, even if `width` is a line below `max-width`
+                         */
+  min-width: #px || #%;
+
+  height || max-height /* Same as width/max-width, except the view and behavior is done vertical.
+                          Note: height/max-height will rarely be used since universal preferable behavior establishes most sites will scroll down as more content is needed
+                        */
+
+  margin: 0 auto; /* Use to set the main container to the center of the web browser */
+}
+
+@media (max-width: 600px) {} /* Use for all media devices */
+@media only printer and (max-width: 600px) {} /* Printers */
+@media only screen and (max-width: 600px) {} /* pc's, phone's, tablets, ect... */
+@media only speech and (max-width: 600px) {} /* screenreaders for people to read outloud */
+
+Universal Preferable Sizes:
+    Content Boxes max-width: 600px;
