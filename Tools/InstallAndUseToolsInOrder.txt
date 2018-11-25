@@ -15,6 +15,8 @@ Use to setup react app building projects:
     https://www.youtube.com/watch?time_continue=5&v=N9BxYpUqdDg
     7) Boilerplate (react application used to setup app projects)
       7.1) Usage
+    8) Install Libraries Using NPM/Yarn
+      8.1) styled-components
 
 
 
@@ -254,3 +256,50 @@ Instructions found from -> https://yarnpkg.com/en/docs/install#windows-stable
     serviceWorker.js
 
 You should now be ready to begin coding for your project.
+
+8) Install Libraries
+======================================================================================================================
+================================================== Install Libraries =================================================
+======================================================================================================================
+* Using the terminal window (CMD), cd to the directory of your project where the package.JSON file is located.
+* Follow the directions below for the libraries you wish to install/use...
+
+********************************** (8.1) styled-components **********************************
+npm install --save styled-components
+npm install @types/styled-components
+
+(Note): This may take a while, but it will remove the error in console...
+********************************** (8.2) React-Router-Dom **********************************
+yarn add react-router-dom
+
+* import { BrowserRouter as Router } from "react-router-dom";
+** Used for wrapping your App component within the "Router" component in the "index.js" file (example below)...
+    ReactDOM.render(
+      <Router>
+        <App />
+      </Router>,
+      document.getElementById("root")
+    );
+
+* import { Route } from "react-router-dom";
+** Used for dynamically setting the path for components in the "App.js" file (example below)...
+    <div className="App">
+      <Header />
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+    </div>
+
+* import { Link } from "react-router-dom";
+** Used for dynamically setting the links for components to replace the <a> element tags (example below)...
+    <DivNavBar>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+      <div>
+        <Link to="/about">About</Link>
+      </div>
+      <div>
+        <Link to="/contact">Contact</Link>
+      </div>
+    </DivNavBar>
